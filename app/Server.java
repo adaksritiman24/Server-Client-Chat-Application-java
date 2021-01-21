@@ -212,7 +212,15 @@ class Server{ //start the main Server class
 		fr.setVisible(true); //make the frame visible after all components are added.
 
 		try{
+
 				System.out.println("Server is Started...");
+
+				//get ip address of the network (if no network is present then print 127.0.0.1)
+				InetAddress host = InetAddress.getLocalHost();
+				String serverAddress = host.getHostAddress().toString();
+				System.out.println("Use 'localhost' as ip address to make connections within local machine");
+				System.out.println("Use this IP to connent across different machines: "+serverAddress);
+
 				ServerSocket ss = new ServerSocket(9989); //Make the server run on port no.:9989 on this machine
 
 
