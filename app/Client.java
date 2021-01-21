@@ -1,4 +1,5 @@
 //this is the client
+import java.util.Scanner;
 import java.io.*;
 import java.net.*;
 import java.awt.Font;
@@ -209,13 +210,18 @@ class Client{//Start the main Client class
 		fr.setVisible(true); //make frame visible
 
 		//Start the socket connections
-		String ip = "localhost"; //since both client and server is in same machine. (ideally should be the ip address of the server machine)
+		String ip;
 		int port = 9989; //port
 		Socket sc;
 
 		try{
 
+			Scanner in = new Scanner(System.in);
+			System.out.print("Enter the server's ip Address: ");
+			ip = in.nextLine();
 			sc = new Socket(ip,port); // initialize the socket by sending a request to the server
+
+			System.out.println("Client Started");
 			ClientReceiver r = new ClientReceiver(sc); // initialize the receiving thread
 			ClientSender s = new ClientSender(sc); // initialize the sending thread
 
